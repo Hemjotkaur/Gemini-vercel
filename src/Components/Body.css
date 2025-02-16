@@ -39,6 +39,14 @@
     -webkit-text-fill-color: transparent;
 }
 
+.main .nav p{
+    background: -webkit-linear-gradient(16deg,#4b90ff,#ff5546);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 30px;
+}
+
 .main .cards{
     display: grid;
     grid-template-columns: repeat(auto-fill,minmax(180px,1fr));

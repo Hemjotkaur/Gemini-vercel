@@ -7,12 +7,18 @@ const Body = () => {
 
     const {onSent,recentPrompt,showResult,loading,resultData,setInput,input}= useContext(Context)
 
+    const handleKeyDown = (event) => {
+        if (event.key === 'Enter') {
+          event.preventDefault(); // Prevent form submission
+          onSent();
+        }
+      };
 
   return (
    <div className="main">
     <div className="nav">
-        <p>Gemini</p>
-        <img src={assets.user_icon} alt='' />
+        <p>Lexi AI</p>
+        <img src={assets.usericon} alt='' />
     </div>
     <div className="main-container">
       { !showResult
@@ -43,7 +49,7 @@ const Body = () => {
         </>
         : <div className="result">
             <div className="result-title">
-                <img src={assets.user_icon} alt=''/>
+                <img src={assets.usericon} alt=''/>
                 <p>{recentPrompt}</p>
             </div>
             <div className="result-data">
@@ -64,15 +70,19 @@ const Body = () => {
         }
         <div className="main-bottom">
             <div className="search-box">
-                <input onChange={(e)=>setInput(e.target.value)} value={input} type='text' placeholder='Enter a prompt here'/>
+                <input 
+                  onChange={(e)=>setInput(e.target.value)} 
+                  value={input} 
+                  type='text' 
+                  placeholder='Enter a prompt here'
+                  onKeyDown={handleKeyDown} 
+                  />
                 <div>
-                    {/* <img src={assets.gallery_icon} alt="" />
-                    <img src={assets.mic_icon} alt="" /> */}
                   {input? <img onClick={()=>onSent()} src={assets.send_icon} alt="" /> :null}
                 </div>
             </div>
             <p className="bottom-info">
-                Gemini may display inaccurate info, including about people,so double-check its responses.Your privacy and Gemini Apps
+                Lexi AI may display inaccurate info, including about people,so double-check its responses.
             </p>
         </div>
     </div>
